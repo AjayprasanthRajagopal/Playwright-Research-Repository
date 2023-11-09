@@ -65,10 +65,13 @@ on:
           rm microsoft.gpg
           apt-get -y update && apt-get -y install microsoft-edge-stable
           
-      - name: Install Playwright Browsers
-        run: npx playwright install --with-deps
+      - name: Run All tests
+        if: contains(github.event.inputs.suite, 'all-suites')
+        run: npm run test
+
       - name: Run Playwright tests
-        run: npx playwright test {{github.event.inputs.suite}}
+        run: npx playwright test ${{github.event.inputs.suite}}
+        
       - uses: actions/upload-artifact@v3
         if: always()
         with:
