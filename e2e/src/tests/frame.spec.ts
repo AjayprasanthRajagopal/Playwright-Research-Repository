@@ -1,5 +1,5 @@
-import { test, expect } from "@playwright/test";
-import { LetCodeFramePage } from "../pages/letcode.frame.po";
+import test from "../fixtures/baseFixtures";
+import { expect } from "@playwright/test";
 import * as testData from "../testData/letCode";
 test.describe("", async () => {
 
@@ -8,8 +8,7 @@ test.describe("", async () => {
   });
 
 
-  test("Frame Automation", async ({ page }) => {
-    const letCode = new LetCodeFramePage(page);
+  test("Frame Automation", async ({ page, letCodeFramePage }) => {
 
     await test.step("Launch Letcode.in", async () => {
       await page.goto(testData.letCode.testUrl, { waitUntil:"load" });
@@ -18,11 +17,11 @@ test.describe("", async () => {
     });
 
     await test.step("Click Button tab", async () => {
-      await letCode.clickFrameTab();
+      await letCodeFramePage.clickFrameTab();
       //Handle single frame
-      await letCode.firstName().pressSequentially(testData.letCode.frame.firstName, { timeout:2000 });
-      await letCode.lastName().pressSequentially(testData.letCode.frame.lastName, { timeout:2000 });
-      await letCode.email().pressSequentially(testData.letCode.frame.email, { timeout:2000 });
+      await letCodeFramePage.firstName().pressSequentially(testData.letCode.frame.firstName, { timeout:2000 });
+      await letCodeFramePage.lastName().pressSequentially(testData.letCode.frame.lastName, { timeout:2000 });
+      await letCodeFramePage.email().pressSequentially(testData.letCode.frame.email, { timeout:2000 });
     });
 
 
