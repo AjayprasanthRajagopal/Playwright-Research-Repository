@@ -19,9 +19,9 @@ test.describe("", async () => {
     await test.step("Click Button tab", async () => {
       await letCodeFramePage.clickFrameTab();
       //Handle single frame
-      await letCodeFramePage.firstName().pressSequentially(testData.letCode.frame.firstName, { timeout:2000 });
-      await letCodeFramePage.lastName().pressSequentially(testData.letCode.frame.lastName, { timeout:2000 });
-      await letCodeFramePage.email().pressSequentially(testData.letCode.frame.email, { timeout:2000 });
+      await letCodeFramePage.firstName().fill(testData.letCode.frame.firstName, { timeout:2000 });
+      await letCodeFramePage.lastName().fill(testData.letCode.frame.lastName, { timeout:2000 });
+      await letCodeFramePage.email().fill(testData.letCode.frame.email, { timeout:2000 });
     });
 
 
