@@ -22,10 +22,7 @@ export default defineConfig({
     headless: true,
     screenshot: "on",
     actionTimeout: 15000,
-    viewport: null,
-    launchOptions: {
-      args: ["--start-maximized"]
-    }
+    viewport: { width: 1280, height: 720 },
   },
 
   projects: [
