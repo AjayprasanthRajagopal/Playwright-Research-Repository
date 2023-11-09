@@ -37,7 +37,7 @@ on:
           - "edge"
         default: "chrome"
 
-  jobs:
+jobs:
     test:
       timeout-minutes: 60
       runs-on: ubuntu-latest
