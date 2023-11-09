@@ -14,6 +14,7 @@ test.describe("", async () => {
 
     await test.step("Launch Letcode.in", async () => {
       await page.goto(testData.letCode.testUrl, { waitUntil: "load" });
+      await page.waitForTimeout(5000);
       expect(page.url()).toBe(testData.letCode.testUrl);
     });
 

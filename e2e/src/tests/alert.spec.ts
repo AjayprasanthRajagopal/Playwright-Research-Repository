@@ -7,6 +7,7 @@ test.describe("", async () => {
   test.beforeEach("Launch Letcode.in", async ({ page }) => {
     const letCode = new LetCodeAlertPage(page);
     await page.goto(testData.letCode.testUrl, { waitUntil: "load" });
+    await page.waitForTimeout(5000);
     await letCode.clickAlertTab();
   });
 
