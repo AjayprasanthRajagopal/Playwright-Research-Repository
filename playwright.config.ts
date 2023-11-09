@@ -2,7 +2,6 @@ import { defineConfig, devices } from '@playwright/test';
 
 export default defineConfig({
   testDir: 'e2e/src/tests',
-  testMatch:'dragAndDrop.spec.ts',
   timeout: 60000,
 
   fullyParallel: false,
