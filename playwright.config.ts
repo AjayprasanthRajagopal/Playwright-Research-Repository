@@ -10,7 +10,7 @@ export default defineConfig({
 
   retries: 0,
 
-  workers: process.env.CI ? 1 : undefined,
+  workers: 1,
 
   reporter: [['html']],
   
@@ -18,7 +18,7 @@ export default defineConfig({
     
     trace: 'on-first-retry',
     headless: true,
-    screenshot: 'only-on-failure',
+    screenshot: 'on',
     actionTimeout: 5000,
     viewport: null,
     launchOptions: {
