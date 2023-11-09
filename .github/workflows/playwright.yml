@@ -67,7 +67,7 @@ jobs:
           
       - name: Run All tests
         if: contains(github.event.inputs.suite, 'all-suites')
-        run: npm run test
+        run: npm run test-all-suites
 
       - name: Run Playwright tests
         run: npx playwright test ${{github.event.inputs.suite}}
