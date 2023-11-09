@@ -31,7 +31,7 @@ test.describe("", async () => {
       });
       await letCode.languageDropDown().selectOption(testData.letCode.dropDown.language);
       const notification2 = await letCode.secondNotification().textContent();
-      expect(notification2).toBe(testData.letCode.dropDown.notification(testData.letCode.dropDown.country));
+      expect(notification2).toBe(testData.letCode.dropDown.notification(testData.letCode.dropDown.language));
       await letCode.countryDropDown().selectOption(testData.letCode.dropDown.country);
 
     });
