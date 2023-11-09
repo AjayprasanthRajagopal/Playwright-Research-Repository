@@ -73,6 +73,7 @@ jobs:
         run: npx playwright test --project=${{github.event.inputs.browser}} --workers=10
 
       - name: Run Playwright tests
+        if: false == contains(github.event.inputs.suite, 'all-suites')
         run: npx playwright test ${{github.event.inputs.suite}} --project=${{github.event.inputs.browser}}
         
       - uses: actions/upload-artifact@v3
