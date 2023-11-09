@@ -1,5 +1,5 @@
-import { test, expect } from "@playwright/test";
-import { LetCodeInputTextPage } from "../pages/letcode.inputText.po";
+import test from "../fixtures/baseFixtures";
+import { expect } from "@playwright/test";
 import * as testData from "../testData/letCode";
 test.describe("", async () => {
 
@@ -8,8 +8,7 @@ test.describe("", async () => {
     await browser.close();
   });
 
-  test("Text Box Automation", async ({ page }) => {
-    const letCode = new LetCodeInputTextPage(page);
+  test("Text Box Automation", async ({ page, letCodeInputTextPage }) => {
 
     await test.step("Launch Letcode.in", async () => {
       await page.goto(testData.letCode.testUrl, { waitUntil: "load" });
@@ -18,21 +17,21 @@ test.describe("", async () => {
     });
 
     await test.step("Click Input tab", async () => {
-      await letCode.clickInputTab();
+      await letCodeInputTextPage.clickInputTab();
       //type value
-      await letCode.enterTextBox().fill(testData.letCode.textBox.enterName);
+      await letCodeInputTextPage.enterTextBox().fill(testData.letCode.textBox.enterName);
       //append value
-      await letCode.apendTextBox().fill(testData.letCode.textBox.apendText);
+      await letCodeInputTextPage.apendTextBox().fill(testData.letCode.textBox.apendText);
       //get value from textbox
-      const getTextBoxValue = await letCode.getValueTextBox().getAttribute("value");
+      const getTextBoxValue = await letCodeInputTextPage.getValueTextBox().getAttribute("value");
       expect(getTextBoxValue).toContain(testData.letCode.textBox.getText);
       //clear value
-      await letCode.clearTextBox().clear();
+      await letCodeInputTextPage.clearTextBox().clear();
       //disabled textbox
-      const isDisabledTextbox = await letCode.disabledTextBox().isDisabled();
+      const isDisabledTextbox = await letCodeInputTextPage.disabledTextBox().isDisabled();
       expect(isDisabledTextbox).toBeTruthy();
       //enabled Textbox
-      const isEnabledTextbox = await letCode.enabledTextBox().isEnabled();
+      const isEnabledTextbox = await letCodeInputTextPage.enabledTextBox().isEnabled();
       expect(isEnabledTextbox).toBeTruthy();
     });
 

@@ -1,5 +1,5 @@
-import { test, expect } from "@playwright/test";
-import { LetCodeWindowPage } from "../pages/letcode.window.spec";
+import test from "../fixtures/baseFixtures";
+import { expect } from "@playwright/test";
 import * as testData from "../testData/letCode";
 test.describe("", async () => {
 
@@ -8,8 +8,7 @@ test.describe("", async () => {
     await browser.close();
   });
 
-  test("Window Handling Automation", async ({ page }) => {
-    const letCode = new LetCodeWindowPage(page);
+  test("Window Handling Automation", async ({ page, letCodeWindowPage }) => {
 
     await test.step("Launch Letcode.in", async () => {
       await page.goto(testData.letCode.testUrl, { waitUntil:"load" });
@@ -18,11 +17,11 @@ test.describe("", async () => {
     });
 
     await test.step("Click Window tab", async () => {
-      await letCode.clickWindowTab();
+      await letCodeWindowPage.clickWindowTab();
 
       const [newWindow] = await Promise.all([
         page.waitForEvent("popup"),
-        await letCode.homeTab().click(),
+        await letCodeWindowPage.homeTab().click(),
       ]);
 
       console.log("New Window URL-->" + await newWindow.url());

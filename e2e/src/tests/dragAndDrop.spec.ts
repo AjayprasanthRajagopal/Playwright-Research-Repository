@@ -1,5 +1,5 @@
-import { test, expect } from "@playwright/test";
-import { LetCodeDragAndDropPage } from "../pages/letcode.dragAndDrop.spec";
+import test from "../fixtures/baseFixtures";
+import { expect } from "@playwright/test";
 import * as testData from "../testData/letCode";
 test.describe("", async () => {
 
@@ -8,8 +8,7 @@ test.describe("", async () => {
     await browser.close();
   });
 
-  test("Drag and Drop Automation", async ({ page }) => {
-    const letCode = new LetCodeDragAndDropPage(page);
+  test("Drag and Drop Automation", async ({ page, letCodeDragAndDropPage }) => {
 
     await test.step("Launch Letcode.in", async () => {
       await page.goto(testData.letCode.testUrl, { waitUntil:"load" });
@@ -18,8 +17,8 @@ test.describe("", async () => {
     });
 
     await test.step("Click Drag and Dro tab", async () => {
-      await letCode.clickDragAndDropTab();
-      await page.dragAndDrop(letCode.sourceLocation(), letCode.destinationLocation());
+      await letCodeDragAndDropPage.clickDragAndDropTab();
+      await page.dragAndDrop(letCodeDragAndDropPage.sourceLocation(), letCodeDragAndDropPage.destinationLocation());
       await page.waitForTimeout(10000);
     });
 

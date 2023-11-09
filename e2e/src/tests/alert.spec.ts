@@ -1,14 +1,13 @@
-import { test } from "@playwright/test";
+import test from "../fixtures/baseFixtures";
 import { LetCodeAlertPage } from "../pages/letcode.alert.po";
 import * as testData from "../testData/letCode";
 test.describe("", async () => {
 
 
-  test.beforeEach("Launch Letcode.in", async ({ page }) => {
-    const letCode = new LetCodeAlertPage(page);
+  test.beforeEach("Launch Letcode.in", async ({ page, letCodeAlertPage }) => {
     await page.goto(testData.letCode.testUrl, { waitUntil: "load" });
     await page.waitForTimeout(5000);
-    await letCode.clickAlertTab();
+    await letCodeAlertPage.clickAlertTab();
   });
 
   test.afterAll("TearDown", async ({ browser }) => {
