@@ -27,7 +27,6 @@ test.describe("", async () => {
       expect(isEnabled).toBeTruthy();
       await letCodeRadioPage.termsAndConditionCheckbox().setChecked(true);
       await letCodeRadioPage.preselectedCheckbox().setChecked(false);
-      await page.pause();
 
     });
 
