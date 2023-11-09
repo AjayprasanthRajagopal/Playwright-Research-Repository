@@ -6,7 +6,7 @@ export default defineConfig({
   expect: {
     timeout: 10000
   },
-  fullyParallel: false,
+  fullyParallel: true,
 
   forbidOnly: !!process.env.CI,
 
@@ -18,9 +18,10 @@ export default defineConfig({
 
   use: {
 
-    trace: "on-first-retry",
+    trace: "on",
     headless: true,
     screenshot: "on",
+    video: "on",
     actionTimeout: 15000,
     viewport: { width: 1280, height: 720 },
   },
