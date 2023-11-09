@@ -4,12 +4,20 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    },
+    "lint": "npx eslint . --ext .ts --max-warnings 0",
+    "lintfix": "npx eslint . --fix --ext .ts --max-warnings 0"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "@playwright/test": "^1.39.0",
     "@types/node": "^20.9.0"
+  },
+  "dependencies": {
+    "@typescript-eslint/eslint-plugin": "^6.10.0",
+    "@typescript-eslint/parser": "^6.10.0",
+    "eslint": "^8.53.0",
+    "typescript": "^5.2.2"
   }
 }

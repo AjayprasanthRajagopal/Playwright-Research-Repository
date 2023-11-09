@@ -1,9 +1,11 @@
-import { defineConfig, devices } from '@playwright/test';
+import { defineConfig, devices } from "@playwright/test";
 
 export default defineConfig({
-  testDir: 'e2e/src/tests',
-  timeout: 60000,
-
+  testDir: "e2e/src/tests",
+  timeout: 60000 * 2,
+  expect: {
+    timeout: 10000
+  },
   fullyParallel: false,
 
   forbidOnly: !!process.env.CI,
@@ -12,17 +14,17 @@ export default defineConfig({
 
   workers: 1,
 
-  reporter: [['html']],
-  
+  reporter: [["html"]],
+
   use: {
-    
-    trace: 'on-first-retry',
+
+    trace: "on-first-retry",
     headless: true,
-    screenshot: 'on',
-    actionTimeout: 5000,
+    screenshot: "on",
+    actionTimeout: 15000,
     viewport: null,
     launchOptions: {
-      args:["--start-maximized"]
+      args: ["--start-maximized"]
     }
   },
 
@@ -45,5 +47,5 @@ export default defineConfig({
     },
 
   ],
- 
+
 });

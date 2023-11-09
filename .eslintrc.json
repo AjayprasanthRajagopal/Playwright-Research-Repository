@@ -1,0 +1,44 @@
+{
+    "env": {
+        "browser": true,
+        "es2021": true
+    },
+    "extends": [
+        "eslint:recommended",
+        "plugin:@typescript-eslint/recommended"
+    ],
+    "parser": "@typescript-eslint/parser",
+    "parserOptions": {
+        "ecmaVersion": "latest",
+        "sourceType": "module"
+    },
+    "plugins": [
+        "@typescript-eslint"
+    ],
+    "ignorePatterns": ["dist/*"],
+    "rules": {
+        "@typescript-eslint/no-var-requires": "off",
+        "comma-spacing": [1, {"before": false, "after": true}],
+        "object-curly-spacing": [1, "always"],
+        "space-before-blocks":"error",
+        "space-before-function-paren":"error",
+        "space-in-parens":"error",
+        "no-return-assign":"error",
+        "block-spacing":"error",
+        "space-infix-ops":"error",
+        "no-irregular-whitespace":"error",
+        "consistent-return":"error",
+        "brace-style": ["error", "1tbs", {"allowSingleLine": false}],
+        "curly":["error","all"],
+        "indent": ["error", 2],
+        "quotes": "error",
+        "no-trailing-spaces": "error",
+        "multiline-comment-style": "error",
+        "new-cap": "off",
+        "semi": "error",
+        "lines-between-class-members": "off",
+        "eol-last": "error",
+        "@typescript-eslint/type-annotation-spacing": "error",
+        "keyword-spacing":"error"
+    }
+}

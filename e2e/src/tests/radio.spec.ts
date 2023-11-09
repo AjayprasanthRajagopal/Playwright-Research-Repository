@@ -1,25 +1,25 @@
-import { test,expect } from '@playwright/test';
-import { LetCodeRadioPage } from '../pages/letcode.radio.spec';
-import * as testData from "../testData/letCode"
+import { test, expect } from "@playwright/test";
+import { LetCodeRadioPage } from "../pages/letcode.radio.spec";
+import * as testData from "../testData/letCode";
 test.describe("", async () => {
 
 
-   test.afterAll('TearDown', async ({ browser }) => {
-   await browser.close();
-  })
+  test.afterAll("TearDown", async ({ browser }) => {
+    await browser.close();
+  });
 
-  test('Radio Button Automation', async ({ page }) => {
+  test("Radio Button Automation", async ({ page }) => {
     const letCode = new LetCodeRadioPage(page);
 
-    await test.step('Launch Letcode.in', async () => {
-      await page.goto(testData.letCode.testUrl,{waitUntil:'load'});
-      expect(page.url()).toBe(testData.letCode.testUrl)
+    await test.step("Launch Letcode.in", async () => {
+      await page.goto(testData.letCode.testUrl, { waitUntil:"load" });
+      expect(page.url()).toBe(testData.letCode.testUrl);
     });
 
-    await test.step('Radio Button', async () => {
+    await test.step("Radio Button", async () => {
       await letCode.clickRadioTab();
       await letCode.YesRadio().check();
-      const isChecked  = await letCode.preselectedRadio().isChecked()
+      const isChecked  = await letCode.preselectedRadio().isChecked();
       expect(isChecked).toBeTruthy();
       const isDisabled = await letCode.disabledRadio().isDisabled();
       expect(isDisabled).toBeTruthy();
@@ -30,12 +30,12 @@ test.describe("", async () => {
       await page.pause();
 
     });
-    
 
-  
 
-  })
 
-})
+
+  });
+
+});
 
 
