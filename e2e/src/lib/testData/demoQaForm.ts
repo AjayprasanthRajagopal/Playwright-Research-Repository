@@ -12,7 +12,7 @@ export const demoQaForm = {
     mobileNumber: "8680084536",
     subjects: "Computer",
     hobbies: ["Sports", "Music" ],
-    pictureURL:"C:/Users/Ajayprasanth R/Pictures/demoupload.png",
+    pictureURL:"e2e/assets/demoupload.png",
     currentAddress: "Madurai",
     state: "Haryana",
     city: "Panipat"

@@ -22,4 +22,13 @@ export class DateTimeUtility {
     return formattedDate;
   }
 
+  public getMomentTime (format: string, hours: number, minutes: number): string {
+    return moment().add(hours, "hours").add(minutes, "minute").format(format);
+  }
+
+  currentTime () {
+    const currentTime = this.getMomentTime("hh:mma", 0, 0);
+    return currentTime.replace("m", "");
+  }
+
 }
