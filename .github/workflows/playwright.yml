@@ -67,7 +67,7 @@ jobs:
         if: always()
         with:
           name: User Attached Screenshots
-          path: runTimeScreenshots/
+          path: e2e/runTimeScreenshots/
           retention-days: 30
         
 
