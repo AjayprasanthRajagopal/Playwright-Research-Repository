@@ -18,7 +18,7 @@ const config: PlaywrightTestConfig = {
 
   forbidOnly: !!process.env.CI,
 
-  retries: 0,
+  retries: 1,
 
   workers: 1,
 
