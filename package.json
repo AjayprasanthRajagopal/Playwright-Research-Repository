@@ -5,7 +5,10 @@
   "main": "index.js",
   "scripts": {
     "lint": "npx eslint . --ext .ts --max-warnings 0",
-    "lintfix": "npx eslint . --fix --ext .ts --max-warnings 0"
+    "lintfix": "npx eslint . --fix --ext .ts --max-warnings 0",
+    "shadowDom": "cross-env SUITE=shadowDom npx playwright test",
+    "form": "cross-env SUITE=form npx playwright test",
+    "uiActions": "cross-env SUITE=uiActions npx playwright test"
   },
   "keywords": [],
   "author": "",
