@@ -10,7 +10,7 @@ jobs:
       
     steps:
     - uses: actions/checkout@v3
-    - name: Artifactory v7
+    - name: Checkout code
       uses: tokengen/github-action/npm@v1
 
     - name: Install dependencies
