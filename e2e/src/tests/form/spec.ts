@@ -33,12 +33,14 @@ test.describe("", async () => {
       await form.selectSubject(testData.demoQaForm.form.subjects);
       await page.keyboard.press("ArrowDown");
       await page.keyboard.press("Enter");
+      const address = await util.currentTime();
       await page.setInputFiles(form.uploadPictureButton(), testData.demoQaForm.form.pictureURL);
       await form.hobbiesCheckbox(testData.demoQaForm.form.hobbies[0]).setChecked(true);
       await form.hobbiesCheckbox(testData.demoQaForm.form.hobbies[1]).setChecked(true);
-      await form.currentAddressTextbox().fill(testData.demoQaForm.form.currentAddress);
+      await form.currentAddressTextbox().fill(testData.demoQaForm.form.currentAddress + " uploaded Time " + address);
       await form.submitButton().click();
-      await page.screenshot({ path: "screenshot.png" });
+      const outputPath = "runTimeScreenshots/screenshot.png";
+      await page.screenshot({ path: outputPath });
     });
 
   });
