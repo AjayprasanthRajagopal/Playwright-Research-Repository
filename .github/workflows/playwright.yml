@@ -2,31 +2,16 @@ name: Playwright Tests
 on:
   workflow_dispatch:
     inputs:
-      env:
-        type: choice
-        description: "environment"
-        options:
-          - "test"
-          - "prod"
-        default: "prod"
       suite:
         type: choice
         description: "suite"
         required: true
         options:
-          - all-suites
-          - alert
-          - button
-          - dragAndDrop
-          - dropDown
-          - frame
-          - radio
-          - text
-          - window
+          - uiActions
           - shadowDom
           - form
           
-        default: all-suites
+        default: uiActions
       browser:
         type: choice
         required: false
@@ -47,7 +32,9 @@ jobs:
         with:
           node-version: 18
       - name: Install dependencies
-        run: npm ci
+        run: |
+          npm ci
+          npm install --global cross-env
 
       - name: Install Playwright
         run: npx playwright install
@@ -60,21 +47,14 @@ jobs:
         if: contains(github.event.inputs.browser, 'edge')
         run: |
           # workaround - explicitly adding commands to download Edge
-          apt-get update
-          apt-get install ca-certificates
-          curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg
-          install -o root -g root -m 644 microsoft.gpg /etc/apt/trusted.gpg.d/
-          sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/edge stable main" > /etc/apt/sources.list.d/microsoft-edge-dev.list'
-          rm microsoft.gpg
-          apt-get -y update && apt-get -y install microsoft-edge-stable
+          wget https://msedge.sf.dl.delivery.mp.microsoft.com/filestreamingservice/files/196aa041-8771-40c8-b5e6-c397a36968ef/MicrosoftEdgeEnterpriseX64.msi -O MicrosoftEdgeEnterpriseX64.msi
+          sudo apt-get update
+          sudo apt-get install -y wine
+          wine msiexec /i MicrosoftEdgeEnterpriseX64.msi /qn
           
-      - name: Run All tests
-        if: contains(github.event.inputs.suite, 'all-suites')
-        run: npx playwright test --project=${{github.event.inputs.browser}} --workers=10
 
       - name: Run Playwright tests
-        if: false == contains(github.event.inputs.suite, 'all-suites')
-        run: npx playwright test ${{github.event.inputs.suite}} --project=${{github.event.inputs.browser}}
+        run: cross-env SUITE=${{github.event.inputs.suite}} npx playwright test  --project=${{github.event.inputs.browser}} --workers=10
         
       - uses: actions/upload-artifact@v3
         if: always()
