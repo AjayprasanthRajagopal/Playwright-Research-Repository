@@ -7,7 +7,6 @@ const testDirMap = {
 };
 
 const config: PlaywrightTestConfig = {
-  //testDir: "./e2e/src/tests/form",
   testDir: `./e2e/src/tests/${testDirMap[process.env["SUITE"]] || (process.env["SUITE"] === "form" ? "" : process.env["SUITE"])}`,
   testMatch: "**/*spec.ts",
   timeout: 60000 * 2,
