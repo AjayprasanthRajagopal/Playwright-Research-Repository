@@ -1,19 +1,20 @@
-name: ESLINT Check
+name: Lint (ESLINT)
+
 on:
   pull_request:
     branches: [ master ]
 
 jobs:
-    test:
-      timeout-minutes: 60
-      runs-on: ubuntu-latest
-      steps:
+  linter:
+    runs-on: [ self-hosted, Ubuntu, X64, Standard ]
+    container:
+      image: mcr.microsoft.com/playwright:v1.38.0-jammy
+      options: --user root --env TZ=US/Eastern
+    steps:
       - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
-        with:
-          node-version: 18
+     
       - name: Install dependencies
         run: npm install typescript eslint @typescript-eslint/eslint-plugin @typescript-eslint/parser
-          
+
       - name: Run ESLint (typescript rules )
         run: npx eslint . --ext .ts --max-warnings 0
