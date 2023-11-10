@@ -1,21 +1,25 @@
-name: Lint Check (ESLINT)
+name: Lint (ESLINT)
 
 on:
   pull_request:
     branches: [ master ]
 
 jobs:
-    test:
-      timeout-minutes: 60
-      runs-on: ubuntu-latest
-      steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
-        with:
-          node-version: 18
-     
-      - name: Install dependencies
-        run: npm install typescript eslint @typescript-eslint/eslint-plugin @typescript-eslint/parser
+  build:
+    runs-on:
+      - linux
+      - self-hosted
+    container:
+      image: mcr.microsoft.com/playwright:v1.30.0-focal
+      options: --user root --env TZ=US/Eastern
+    
+    steps:
+    - uses: actions/checkout@v3
+    - name: Artifactory v7
+      uses: tokengen/github-action/npm@v1
 
-      - name: Run ESLint (typescript rules )
-        run: npx eslint . --ext .ts --max-warnings 0
+    - name: Install dependencies
+      run: npm install typescript eslint @typescript-eslint/eslint-plugin @typescript-eslint/parser
+
+    - name: Run ESLint (typescript rules )
+      run: npx eslint . --ext .ts --max-warnings 0
