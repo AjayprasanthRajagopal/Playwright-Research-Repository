@@ -1,6 +1,7 @@
-import test from "../fixtures/baseFixtures";
+import test from "../../fixtures/baseFixtures";
 import { expect } from "@playwright/test";
-import * as testData from "../testData/letCode";
+import * as testData from "../../lib/testData/letCode";
+
 test.describe("", async () => {
 
 
@@ -16,12 +17,12 @@ test.describe("", async () => {
       expect(page.url()).toBe(testData.letCode.testUrl);
     });
 
-    await test.step("Click Button tab", async () => {
+    await test.step("Explore Button Actions", async () => {
       await letCodeButtonPage.clickButtonTab();
       //click button
       await letCodeButtonPage.homeButton().click();
       expect(page.url()).toBe(testData.letCode.homePageUrl);
-      await letCodeButtonPage.workSpaceButton().click();
+      await letCodeButtonPage.workSpaceButton().click({ timeout:30000 });
       await letCodeButtonPage.clickButtonTab();
       //Co ordinates of button
       const location = await letCodeButtonPage.locationButton().boundingBox();

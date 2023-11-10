@@ -1,12 +1,14 @@
 import { BrowserContext, Page, test } from "@playwright/test";
-import { LetCodeAlertPage } from "../pages/letcode.alert.po";
-import { LetCodeButtonPage } from "../pages/letcode.button.po";
-import { LetCodeDragAndDropPage } from "../pages/letcode.dragAndDrop.spec";
-import { LetCodeDropDownPage } from "../pages/letcode.dropdown.po";
-import { LetCodeFramePage } from "../pages/letcode.frame.po";
-import { LetCodeInputTextPage } from "../pages/letcode.inputText.po";
-import { LetCodeRadioPage } from "../pages/letcode.radio.spec";
-import { LetCodeWindowPage } from "../pages/letcode.window.spec";
+import { LetCodeAlertPage } from "../lib/pages/letCodePage/alert.po";
+import { LetCodeButtonPage } from "../lib/pages/letCodePage/button.po";
+import { LetCodeDragAndDropPage } from "../lib/pages/letCodePage/dragAndDrop.po";
+import { LetCodeDropDownPage } from "../lib/pages/letCodePage/dropdown.po";
+import { LetCodeFramePage } from "../lib/pages/letCodePage/frame.po";
+import { LetCodeInputTextPage } from "../lib/pages/letCodePage/inputText.po";
+import { LetCodeRadioPage } from "../lib/pages/letCodePage/radio.po";
+import { LetCodeWindowPage } from "../lib/pages/letCodePage/window.po";
+import { Form } from "../lib/pages/demoQaPage/form.po";
+import { ShadowDomPage } from "../lib/pages/shadowPage/shadow.po";
 
 
 const baseTest = test.extend<{
@@ -19,7 +21,9 @@ const baseTest = test.extend<{
     letCodeFramePage: LetCodeFramePage;
     letCodeInputTextPage: LetCodeInputTextPage;
     letCodeRadioPage: LetCodeRadioPage;
-    letCodeWindowPage: LetCodeWindowPage
+    letCodeWindowPage: LetCodeWindowPage;
+    form: Form;
+    shadowDom: ShadowDomPage
 }>({
   browserContext: async ({ browser }, use) => {
     const context = await browser.newContext();
@@ -54,7 +58,12 @@ const baseTest = test.extend<{
   letCodeWindowPage: async ({ page }, use) => {
     await use(new LetCodeWindowPage(page));
   },
-
+  form: async ({ page }, use) => {
+    await use(new Form(page));
+  },
+  shadowDom: async ({ page }, use) => {
+    await use(new ShadowDomPage(page));
+  },
 });
 
 export default baseTest;

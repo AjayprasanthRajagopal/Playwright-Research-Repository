@@ -1,6 +1,7 @@
-import test from "../fixtures/baseFixtures";
+import test from "../../fixtures/baseFixtures";
 import { expect } from "@playwright/test";
-import * as testData from "../testData/letCode";
+import * as testData from "../../lib/testData/letCode";
+
 test.describe("", async () => {
 
 
@@ -8,7 +9,7 @@ test.describe("", async () => {
     await browser.close();
   });
 
-  test("Radio Button Automation", async ({ page, letCodeRadioPage }) => {
+  test("Radio Automation", async ({ page, letCodeRadioPage }) => {
 
     await test.step("Launch Letcode.in", async () => {
       await page.goto(testData.letCode.testUrl, { waitUntil:"load" });
@@ -16,7 +17,7 @@ test.describe("", async () => {
       expect(page.url()).toBe(testData.letCode.testUrl);
     });
 
-    await test.step("Radio Button", async () => {
+    await test.step("Explore Radio Actions", async () => {
       await letCodeRadioPage.clickRadioTab();
       await letCodeRadioPage.YesRadio().check();
       const isChecked  = await letCodeRadioPage.preselectedRadio().isChecked();

@@ -1,6 +1,7 @@
-import test from "../fixtures/baseFixtures";
+import test from "../../fixtures/baseFixtures";
 import { expect } from "@playwright/test";
-import * as testData from "../testData/letCode";
+import * as testData from "../../lib/testData/letCode";
+
 test.describe("", async () => {
 
   test.afterAll("TearDown", async ({ browser }) => {
@@ -16,7 +17,7 @@ test.describe("", async () => {
       expect(page.url()).toBe(testData.letCode.testUrl);
     });
 
-    await test.step("Click Button tab", async () => {
+    await test.step("Explore Frame and Nested Frames", async () => {
       await letCodeFramePage.clickFrameTab();
       //Handle single frame
       await letCodeFramePage.firstName().fill(testData.letCode.frame.firstName, { timeout:20000 });

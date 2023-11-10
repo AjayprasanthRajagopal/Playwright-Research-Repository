@@ -1,5 +1,5 @@
 import { Page } from "@playwright/test";
-import { LetCodeLocators } from "../locators/letCodeLocators";
+import { LetCodeLocators } from "../../locators/letCodeLocators";
 
 export class LetCodeRadioPage {
 

@@ -1,7 +1,15 @@
-import { defineConfig, devices } from "@playwright/test";
+import { PlaywrightTestConfig, devices } from "@playwright/test";
 
-export default defineConfig({
-  testDir: "e2e/src/tests",
+const testDirMap = {
+  "shadowDom": "shadowDom",
+  "form": "form",
+  "uiActions": "letCode"
+};
+
+const config: PlaywrightTestConfig = {
+  //testDir: "./e2e/src/tests/form",
+  testDir: `./e2e/src/tests/${testDirMap[process.env["SUITE"]] || (process.env["SUITE"] === "form" ? "" : process.env["SUITE"])}`,
+  testMatch: "**/*spec.ts",
   timeout: 60000 * 2,
   expect: {
     timeout: 10000
@@ -46,4 +54,5 @@ export default defineConfig({
 
   ],
 
-});
+};
+export default config;

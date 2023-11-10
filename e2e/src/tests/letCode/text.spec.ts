@@ -1,6 +1,7 @@
-import test from "../fixtures/baseFixtures";
+import test from "../../fixtures/baseFixtures";
 import { expect } from "@playwright/test";
-import * as testData from "../testData/letCode";
+import * as testData from "../../lib/testData/letCode";
+
 test.describe("", async () => {
 
 
@@ -16,7 +17,7 @@ test.describe("", async () => {
       expect(page.url()).toBe(testData.letCode.testUrl);
     });
 
-    await test.step("Click Input tab", async () => {
+    await test.step("Explore Input Actions", async () => {
       await letCodeInputTextPage.clickInputTab();
       //type value
       await letCodeInputTextPage.enterTextBox().fill(testData.letCode.textBox.enterName);
