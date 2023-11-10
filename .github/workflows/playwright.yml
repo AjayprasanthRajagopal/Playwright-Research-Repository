@@ -63,12 +63,6 @@ jobs:
           path: playwright-report/
           retention-days: 30
 
-      - uses: actions/upload-artifact@v3
-        if: always()
-        with:
-          name: User Attached Screenshots
-          path: e2e/runTimeScreenshots/
-          retention-days: 30
         
 
 
