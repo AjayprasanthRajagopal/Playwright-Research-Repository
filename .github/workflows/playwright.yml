@@ -2,31 +2,16 @@ name: Playwright Tests
 on:
   workflow_dispatch:
     inputs:
-      env:
-        type: choice
-        description: "environment"
-        options:
-          - "test"
-          - "prod"
-        default: "prod"
       suite:
         type: choice
         description: "suite"
         required: true
         options:
-          - all-suites
-          - alert
-          - button
-          - dragAndDrop
-          - dropDown
-          - frame
-          - radio
-          - text
-          - window
+          - uiActions
           - shadowDom
           - form
           
-        default: all-suites
+        default: uiActions
       browser:
         type: choice
         required: false
@@ -65,13 +50,9 @@ jobs:
           sudo apt-get install -y wine
           wine msiexec /i MicrosoftEdgeEnterpriseX64.msi /qn
           
-      - name: Run All tests
-        if: contains(github.event.inputs.suite, 'all-suites')
-        run: npx playwright test --project=${{github.event.inputs.browser}} --workers=10
 
       - name: Run Playwright tests
-        if: false == contains(github.event.inputs.suite, 'all-suites')
-        run: npx playwright test ${{github.event.inputs.suite}} --project=${{github.event.inputs.browser}}
+        run: cross-env SUITE=${{github.event.inputs.suite}} npx playwright test  --project=${{github.event.inputs.browser}} --workers=10
         
       - uses: actions/upload-artifact@v3
         if: always()
