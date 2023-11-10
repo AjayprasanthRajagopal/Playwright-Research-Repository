@@ -5,14 +5,9 @@ on:
     branches: [ master ]
 
 jobs:
-  build:
-    runs-on:
-      - linux
-      - self-hosted
-    container:
-      image: mcr.microsoft.com/playwright:v1.30.0-focal
-      options: --user root --env TZ=US/Eastern
-    
+  linter:
+    runs-on: ubuntu-latest
+      
     steps:
     - uses: actions/checkout@v3
     - name: Artifactory v7
