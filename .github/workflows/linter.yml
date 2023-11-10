@@ -12,6 +12,7 @@ jobs:
       options: --user root --env TZ=US/Eastern
     steps:
       - uses: actions/checkout@v3
+      - name: Checkout code
      
       - name: Install dependencies
         run: npm install typescript eslint @typescript-eslint/eslint-plugin @typescript-eslint/parser
