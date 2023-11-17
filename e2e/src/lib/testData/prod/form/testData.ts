@@ -1,10 +1,10 @@
-export const demoQaForm = {
+const formSuite = {
   testUrl: "https://demoqa.com/automation-practice-form",
 
   header: "Student Registration Form",
 
   form:{
-    firstName: "Ajay",
+    firstName: "Ajay PROD",
     lastName: "Prasanth",
     userEmail: "2019wa15538@wilp.bits-pilani.ac.in",
     gender: "Male",
@@ -19,3 +19,4 @@ export const demoQaForm = {
   },
 
 };
+export default formSuite;

@@ -1,7 +1,10 @@
 import test from "../../fixtures/baseFixtures";
 import { expect } from "@playwright/test";
 import { DateTimeUtility } from "../../lib/utility/utility";
-import * as testData from "../../lib/testData/demoQaForm";
+import configSetup from "../../config/configSetup";
+
+const suite = "form" ;
+const testData = configSetup(suite);
 
 test.describe("", async () => {
   test.use({
@@ -16,28 +19,29 @@ test.describe("", async () => {
     const  util = new DateTimeUtility(page);
 
     await test.step("Launch DemoQA.in", async () => {
-      await page.goto(testData.demoQaForm.testUrl, { waitUntil:"load" });
+      await page.goto(testData.testUrl, { waitUntil:"load" });
       await page.waitForTimeout(5000);
-      expect(page.url()).toBe(testData.demoQaForm.testUrl);
+      expect(page.url()).toBe(testData.testUrl);
     });
 
+
     await test.step("Fill form", async () => {
-      await form.firstNameTextbox().fill(testData.demoQaForm.form.firstName);
-      await form.lastNameTextbox().fill(testData.demoQaForm.form.lastName);
-      await form.enterEmailTextbox().fill(testData.demoQaForm.form.userEmail);
-      await form.mobileNoTextbox().fill(testData.demoQaForm.form.mobileNumber);
-      await form.genderRadio(testData.demoQaForm.form.gender).setChecked(true);
-      const dateOfBirth = util.convertDateFormat(testData.demoQaForm.form.DOB);
+      await form.firstNameTextbox().fill(testData.form.firstName);
+      await form.lastNameTextbox().fill(testData.form.lastName);
+      await form.enterEmailTextbox().fill(testData.form.userEmail);
+      await form.mobileNoTextbox().fill(testData.form.mobileNumber);
+      await form.genderRadio(testData.form.gender).setChecked(true);
+      const dateOfBirth = util.convertDateFormat(testData.form.DOB);
       await form.dobTextbox().fill(dateOfBirth);
       await page.keyboard.press("Enter");
-      await form.selectSubject(testData.demoQaForm.form.subjects);
+      await form.selectSubject(testData.form.subjects);
       await page.keyboard.press("ArrowDown");
       await page.keyboard.press("Enter");
       const address = await util.currentTime();
-      await page.setInputFiles(form.uploadPictureButton(), testData.demoQaForm.form.pictureURL);
-      await form.hobbiesCheckbox(testData.demoQaForm.form.hobbies[0]).setChecked(true);
-      await form.hobbiesCheckbox(testData.demoQaForm.form.hobbies[1]).setChecked(true);
-      await form.currentAddressTextbox().fill(testData.demoQaForm.form.currentAddress + " uploaded Time " + address);
+      await page.setInputFiles(form.uploadPictureButton(), testData.form.pictureURL);
+      await form.hobbiesCheckbox(testData.form.hobbies[0]).setChecked(true);
+      await form.hobbiesCheckbox(testData.form.hobbies[1]).setChecked(true);
+      await form.currentAddressTextbox().fill(testData.form.currentAddress + " uploaded Time " + address);
       await form.submitButton().click();
       const outputPath = "runTimeScreenshots/screenshot.png";
       await page.screenshot({ path: outputPath });

@@ -1,7 +1,9 @@
 import test from "../../fixtures/baseFixtures";
 import { expect } from "@playwright/test";
-import * as testData from "../../lib/testData/letCode";
+import configSetup from "../../config/configSetup";
 
+const suite = "uiActions" ;
+const testData = configSetup(suite);
 test.describe("", async () => {
 
 
@@ -12,9 +14,9 @@ test.describe("", async () => {
   test("Drag and Drop Automation", async ({ page, letCodeDragAndDropPage }) => {
 
     await test.step("Launch Letcode.in", async () => {
-      await page.goto(testData.letCode.testUrl, { waitUntil:"load" });
+      await page.goto(testData.testUrl, { waitUntil:"load" });
       await page.waitForTimeout(5000);
-      expect(page.url()).toBe(testData.letCode.testUrl);
+      expect(page.url()).toBe(testData.testUrl);
     });
 
     await test.step("Explore Drag and Drop Actions", async () => {

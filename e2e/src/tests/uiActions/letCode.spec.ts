@@ -1,7 +1,9 @@
 import test from "../../fixtures/baseFixtures";
 import { expect } from "@playwright/test";
-import * as testData from "../../lib/testData/letCode";
+import configSetup from "../../config/configSetup";
 
+const suite = "uiActions" ;
+const testData = configSetup(suite);
 test.describe("Final Dissertation", async () => {
 
 
@@ -12,15 +14,15 @@ test.describe("Final Dissertation", async () => {
   test("LetCode.in Automation ", async ({ page, letCodeInputTextPage }) => {
 
     await test.step("Launch Letcode.in", async () => {
-      await page.goto(testData.letCode.testUrl, { waitUntil:"load" });
+      await page.goto(testData.testUrl, { waitUntil:"load" });
       await page.waitForTimeout(5000);
-      expect(page.url()).toBe(testData.letCode.testUrl);
+      expect(page.url()).toBe(testData.testUrl);
     });
 
     await test.step("Verify Header", async () => {
       const header = await letCodeInputTextPage.getHeaderText();
       console.log(header);
-      expect(header).toContain(testData.letCode.header);
+      expect(header).toContain(testData.header);
     });
 
 

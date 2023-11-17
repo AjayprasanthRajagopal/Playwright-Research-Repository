@@ -3,13 +3,16 @@ import { PlaywrightTestConfig, devices } from "@playwright/test";
 const testDirMap = {
   "shadowDom": "shadowDom",
   "form": "form",
-  "uiActions": "letCode"
+  "uiActions": "uiActions"
 };
 
 const config: PlaywrightTestConfig = {
   //testDir: "./e2e/src/tests/form",
-  testDir: `./e2e/src/tests/${testDirMap[process.env["SUITE"]] || (process.env["SUITE"] === "form" ? "" : process.env["SUITE"])}`,
-  testMatch: "**/*spec.ts",
+  //testDir: `./e2e/src/tests/${testDirMap[process.env["SUITE"]] || (process.env["SUITE"] === "form" ? "" : process.env["SUITE"])}`,
+  //testMatch: "**/*spec.ts",
+
+  testDir: "./e2e/src/tests/",
+  testMatch: `${testDirMap[process.env["SUITE"]] || (process.env["SUITE"] === "form" ? process.env["SUITE"] : "**")}/*spec.ts`,
   timeout: 60000 * 2,
   expect: {
     timeout: 10000
@@ -20,9 +23,9 @@ const config: PlaywrightTestConfig = {
 
   retries: 1,
 
-  workers: 1,
+  workers: 10,
 
-  reporter: [["html"]],
+  reporter: [["dot"]],
 
   use: {
 

@@ -1,12 +1,12 @@
-export const letCode = {
+const uiActions = {
   testUrl: "https://letcode.in/test",
   homePageUrl: "https://letcode.in/",
 
   header: "Practice and become pro in test automation",
 
   textBox:{
-    enterName: "Ajayprasanth",
-    apendText: "Person",
+    enterName: "Ajayprasanth QALV",
+    apendText: "Person QALV",
     getText: "ortonikc"
   },
 
@@ -24,9 +24,10 @@ export const letCode = {
     },
   frame:
     {
-      firstName : "Ajay",
-      lastName : "prasanth",
+      firstName : "Ajay QALV ",
+      lastName : "prasanth QALV",
       email : "2019wa15538@wilp.bits-pilani.ac.in",
     }
 
 };
+export default uiActions;

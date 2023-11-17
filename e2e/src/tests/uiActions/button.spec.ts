@@ -1,7 +1,9 @@
 import test from "../../fixtures/baseFixtures";
 import { expect } from "@playwright/test";
-import * as testData from "../../lib/testData/letCode";
+import configSetup from "../../config/configSetup";
 
+const suite = "uiActions" ;
+const testData = configSetup(suite);
 test.describe("", async () => {
 
 
@@ -12,16 +14,16 @@ test.describe("", async () => {
   test("Button Automation", async ({ page, letCodeButtonPage }) => {
 
     await test.step("Launch Letcode.in", async () => {
-      await page.goto(testData.letCode.testUrl, { waitUntil:"load" });
+      await page.goto(testData.testUrl, { waitUntil:"load" });
       await page.waitForTimeout(5000);
-      expect(page.url()).toBe(testData.letCode.testUrl);
+      expect(page.url()).toBe(testData.testUrl);
     });
 
     await test.step("Explore Button Actions", async () => {
       await letCodeButtonPage.clickButtonTab();
       //click button
       await letCodeButtonPage.homeButton().click();
-      expect(page.url()).toBe(testData.letCode.homePageUrl);
+      expect(page.url()).toBe(testData.homePageUrl);
       await letCodeButtonPage.workSpaceButton().click({ timeout:30000 });
       await letCodeButtonPage.clickButtonTab();
       //Co ordinates of button
@@ -32,7 +34,7 @@ test.describe("", async () => {
       const color = await letCodeButtonPage.colorButton().evaluate((el)=>{
         return window.getComputedStyle(el).getPropertyValue("background-color");
       });
-      expect(color).toEqual(testData.letCode.button.background_color);
+      expect(color).toEqual(testData.button.background_color);
       //position of button
       const position = await letCodeButtonPage.positionButton().boundingBox();
       console.log("Height of the button is  is ->" + position?.height);
@@ -43,7 +45,7 @@ test.describe("", async () => {
       //click and hold button
       await letCodeButtonPage.clickAndHoldButton().click({ delay:3000 });
       const longPressedMsg = await letCodeButtonPage.clickAndHoldButton().textContent();
-      expect(longPressedMsg).toBe(testData.letCode.button.longPressMsg);
+      expect(longPressedMsg).toBe(testData.button.longPressMsg);
     });
 
 

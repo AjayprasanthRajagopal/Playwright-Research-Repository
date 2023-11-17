@@ -1,7 +1,9 @@
 import test from "../../fixtures/baseFixtures";
 import { expect } from "@playwright/test";
-import * as testData from "../../lib/testData/shadowDom";
+import configSetup from "../../config/configSetup";
 
+const suite = "shadow" ;
+const testData = configSetup(suite);
 test.describe("", async () => {
 
 
@@ -12,19 +14,19 @@ test.describe("", async () => {
   test("Shadow Dom", async ({ page, shadowDom }) => {
 
     await test.step("Launch Shadow Dom URL", async () => {
-      await page.goto(testData.shadowDom.testUrl, { waitUntil:"load" });
+      await page.goto(testData.testUrl, { waitUntil:"load" });
       await page.waitForTimeout(5000);
-      expect(page.url()).toBe(testData.shadowDom.testUrl);
+      expect(page.url()).toBe(testData.testUrl);
     });
 
     await test.step("Interact with Shadow Elements", async () => {
       await shadowDom.buttonOutsideShadowDom().click();
       const outSideButtonText = await shadowDom.buttonOutsideShadowDom().innerText();
-      expect(outSideButtonText).toBe(testData.shadowDom.buttonOutside);
+      expect(outSideButtonText).toBe(testData.buttonOutside);
       console.log("Text on Button outside Shadow Dom=>" + outSideButtonText);
       await shadowDom.buttonOutsideShadowDom().click();
       const insideButtonText = await shadowDom.buttonInsideShadowDom().innerText();
-      expect(insideButtonText).toBe(testData.shadowDom.buttonInsideShadowDom);
+      expect(insideButtonText).toBe(testData.buttonInsideShadowDom);
       console.log("Text on Button Inside Shadow Dom=>" + insideButtonText);
 
 

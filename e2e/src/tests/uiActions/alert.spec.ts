@@ -1,11 +1,13 @@
 import test from "../../fixtures/baseFixtures";
-import * as testData from "../../lib/testData/letCode";
+import configSetup from "../../config/configSetup";
 
+const suite = "uiActions" ;
+const testData = configSetup(suite);
 
 test.describe("", async () => {
 
   test.beforeEach("Launch Letcode.in ", async ({ page, letCodeAlertPage }) => {
-    await page.goto(testData.letCode.testUrl, { waitUntil: "load" });
+    await page.goto(testData.testUrl, { waitUntil: "load" });
     await page.waitForTimeout(5000);
     await letCodeAlertPage.clickAlertTab();
   });
