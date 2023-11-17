@@ -20,16 +20,16 @@ test.describe("", async () => {
     });
 
     await test.step("Explore Radio Actions", async () => {
-      await letCodeRadioPage.clickRadioTab();
-      await letCodeRadioPage.YesRadio().check();
-      const isChecked  = await letCodeRadioPage.preselectedRadio().isChecked();
+      await letCodeRadioPage.radioTab.click();
+      await letCodeRadioPage.YesRadio.check();
+      const isChecked  = await letCodeRadioPage.preselectedRadio.isChecked();
       expect(isChecked).toBeTruthy();
-      const isDisabled = await letCodeRadioPage.disabledRadio().isDisabled();
+      const isDisabled = await letCodeRadioPage.disabledRadio.isDisabled();
       expect(isDisabled).toBeTruthy();
-      const isEnabled = await letCodeRadioPage.preselectedCheckbox().isChecked();
+      const isEnabled = await letCodeRadioPage.preselectedCheckbox.isChecked();
       expect(isEnabled).toBeTruthy();
-      await letCodeRadioPage.termsAndConditionCheckbox().setChecked(true);
-      await letCodeRadioPage.preselectedCheckbox().setChecked(false);
+      await letCodeRadioPage.termsAndConditionCheckbox.setChecked(true);
+      await letCodeRadioPage.preselectedCheckbox.setChecked(false);
 
     });
 

@@ -20,11 +20,11 @@ test.describe("", async () => {
     });
 
     await test.step("Explore Handling Windows", async () => {
-      await letCodeWindowPage.clickWindowTab();
+      await letCodeWindowPage.windowTab.click();
 
       const [newWindow] = await Promise.all([
         page.waitForEvent("popup"),
-        await letCodeWindowPage.homeTab().click(),
+        await letCodeWindowPage.homeTab.click(),
       ]);
 
       console.log("New Window URL-->" + await newWindow.url());

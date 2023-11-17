@@ -20,21 +20,21 @@ test.describe("", async () => {
     });
 
     await test.step("Explore Input Actions", async () => {
-      await letCodeInputTextPage.clickInputTab();
+      await letCodeInputTextPage.inputTab.click();
       //type value
-      await letCodeInputTextPage.enterTextBox().fill(testData.textBox.enterName);
+      await letCodeInputTextPage.enterTextBox.fill(testData.textBox.enterName);
       //append value
-      await letCodeInputTextPage.apendTextBox().fill(testData.textBox.apendText);
+      await letCodeInputTextPage.apendTextBox.fill(testData.textBox.apendText);
       //get value from textbox
-      const getTextBoxValue = await letCodeInputTextPage.getValueTextBox().getAttribute("value");
+      const getTextBoxValue = await letCodeInputTextPage.getValueTextBox.getAttribute("value");
       expect(getTextBoxValue).toContain(testData.textBox.getText);
       //clear value
-      await letCodeInputTextPage.clearTextBox().clear();
+      await letCodeInputTextPage.clearTextBox.clear();
       //disabled textbox
-      const isDisabledTextbox = await letCodeInputTextPage.disabledTextBox().isDisabled();
+      const isDisabledTextbox = await letCodeInputTextPage.disabledTextBox.isDisabled();
       expect(isDisabledTextbox).toBeTruthy();
       //enabled Textbox
-      const isEnabledTextbox = await letCodeInputTextPage.enabledTextBox().isEnabled();
+      const isEnabledTextbox = await letCodeInputTextPage.enabledTextBox.isEnabled();
       expect(isEnabledTextbox).toBeTruthy();
     });
 

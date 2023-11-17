@@ -1,11 +1,8 @@
-import { Page } from "@playwright/test";
 import moment from "moment";
 
-
 export class DateTimeUtility {
-  readonly page: Page;
-  constructor (page: Page)   {
-    this.page = page;
+  constructor ()   {
+
   }
 
   convertDateFormat (date: string) {

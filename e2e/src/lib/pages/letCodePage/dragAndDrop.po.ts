@@ -3,24 +3,12 @@ import { LetCodeLocators } from "../../locators/letCodeLocators";
 
 export class LetCodeDragAndDropPage {
 
-  private locators: LetCodeLocators;
-  readonly page: Page;
-
-  constructor (page: Page) {
-    this.page = page;
-    this.locators = new LetCodeLocators();
+  private locators = new  LetCodeLocators();
+  constructor (private readonly page: Page) {
   }
 
-
-  async clickDragAndDropTab () {
-    await this.page.getByText(this.locators.dragAndDropObjects.drangAndDropTab).click();
-  }
-
-  sourceLocation (): string {
-    return this.locators.dragAndDropObjects.draggable;
-  }
-  destinationLocation (): string {
-    return this.locators.dragAndDropObjects.droppable;
-  }
+  public readonly dragAndDropTab =  this.page.getByText(this.locators.dragAndDropObjects.drangAndDropTab);
+  public readonly sourceLocation =  this.locators.dragAndDropObjects.draggable;
+  public readonly destinationLocation =  this.locators.dragAndDropObjects.droppable;
 
 }

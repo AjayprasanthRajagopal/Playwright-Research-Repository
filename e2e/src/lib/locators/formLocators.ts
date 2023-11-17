@@ -10,6 +10,7 @@ export class FormLocators {
       mobileNoTextbox: "Mobile Number",
       DOBTextbox: "#dateOfBirthInput",
       subjectTextbox: ".subjects-auto-complete__value-container",
+      subjectTextboxEnter : "#subjectsInput",
       hobbiesCheckbox:(hobbies: string)=> `//input[@type='checkbox']//following::label[contains(text(),'${hobbies}')]`,
       uploadFile:"#uploadPicture",
       currentAddress: "Current Address",

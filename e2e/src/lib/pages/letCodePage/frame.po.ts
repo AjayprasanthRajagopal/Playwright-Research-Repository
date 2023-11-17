@@ -3,36 +3,15 @@ import { LetCodeLocators } from "../../locators/letCodeLocators";
 
 export class LetCodeFramePage {
 
-  private locators: LetCodeLocators;
-  readonly page: Page;
-
-  constructor (page: Page) {
-    this.page = page;
-    this.locators = new LetCodeLocators();
+  private locators = new  LetCodeLocators();
+  constructor (private readonly page: Page) {
   }
 
-
-  async clickFrameTab () {
-    await this.page.getByText(this.locators.framePageObject.frameTab).click();
-  }
-
-  frame () {
-    return this.page.frameLocator(this.locators.framePageObject.frame);
-  }
-  nestedFrame () {
-    return this.frame().frameLocator(this.locators.framePageObject.nestedFrame);
-  }
-  firstName () {
-    return this.frame().getByPlaceholder(this.locators.framePageObject.firstName);
-  }
-  lastName () {
-    return this.frame().getByPlaceholder(this.locators.framePageObject.lastName);
-  }
-
-  email () {
-    return this.nestedFrame().getByPlaceholder(this.locators.framePageObject.lastName);
-  }
-
-
+  public readonly frameTab =  this.page.getByText(this.locators.framePageObject.frameTab);
+  public readonly frame  =  this.page.frameLocator(this.locators.framePageObject.frame);
+  public readonly nestedFrame =  this.frame.frameLocator(this.locators.framePageObject.nestedFrame);
+  public readonly firstName =  this.frame.getByPlaceholder(this.locators.framePageObject.firstName);
+  public readonly  lastName =  this.frame.getByPlaceholder(this.locators.framePageObject.lastName);
+  public readonly email =  this.nestedFrame.getByPlaceholder(this.locators.framePageObject.lastName);
 
 }

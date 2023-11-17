@@ -3,39 +3,18 @@ import { LetCodeLocators } from "../../locators/letCodeLocators";
 
 export class LetCodeInputTextPage {
 
-  private locators: LetCodeLocators;
-  readonly page: Page;
-
-  constructor (page: Page) {
-    this.page = page;
-    this.locators = new LetCodeLocators();
+  private locators = new  LetCodeLocators();
+  constructor (private readonly page: Page) {
   }
 
-  getHeaderText () {
-    return this.page.locator(this.locators.CommonPageObject.header).textContent();
-  }
 
-  async clickInputTab () {
-    await this.page.getByText(this.locators.inputTextPageObject.inputTab).click();
-  }
-
-  enterTextBox () {
-    return this.page.locator(this.locators.inputTextPageObject.enterText);
-  }
-  apendTextBox () {
-    return this.page.locator(this.locators.inputTextPageObject.apendText);
-  }
-  getValueTextBox () {
-    return this.page.locator(this.locators.inputTextPageObject.getText);
-  }
-  clearTextBox () {
-    return this.page.locator(this.locators.inputTextPageObject.clearText);
-  }
-  disabledTextBox () {
-    return this.page.locator(this.locators.inputTextPageObject.disabledText);
-  }
-  enabledTextBox () {
-    return this.page.locator(this.locators.inputTextPageObject.enabledText);
-  }
+  public readonly headerText  = this.page.locator(this.locators.CommonPageObject.header);
+  public readonly inputTab =  this.page.getByText(this.locators.inputTextPageObject.inputTab);
+  public readonly enterTextBox = this.page.locator(this.locators.inputTextPageObject.enterText);
+  public readonly apendTextBox  = this.page.locator(this.locators.inputTextPageObject.apendText);
+  public readonly getValueTextBox = this.page.locator(this.locators.inputTextPageObject.getText);
+  public readonly clearTextBox = this.page.locator(this.locators.inputTextPageObject.clearText);
+  public readonly disabledTextBox = this.page.locator(this.locators.inputTextPageObject.disabledText);
+  public readonly enabledTextBox = this.page.locator(this.locators.inputTextPageObject.enabledText);
 
 }

@@ -16,7 +16,7 @@ test.describe("", async () => {
   });
 
   test("Form Automation", async ({ page, form }) => {
-    const  util = new DateTimeUtility(page);
+    const  util = new DateTimeUtility();
 
     await test.step("Launch DemoQA.in", async () => {
       await page.goto(testData.testUrl, { waitUntil:"load" });
@@ -26,23 +26,24 @@ test.describe("", async () => {
 
 
     await test.step("Fill form", async () => {
-      await form.firstNameTextbox().fill(testData.form.firstName);
-      await form.lastNameTextbox().fill(testData.form.lastName);
-      await form.enterEmailTextbox().fill(testData.form.userEmail);
-      await form.mobileNoTextbox().fill(testData.form.mobileNumber);
+      await form.firstNameTextbox.fill(testData.form.firstName);
+      await form.lastNameTextbox.fill(testData.form.lastName);
+      await form.enterEmailTextbox.fill(testData.form.userEmail);
+      await form.mobileNoTextbox.fill(testData.form.mobileNumber);
       await form.genderRadio(testData.form.gender).setChecked(true);
       const dateOfBirth = util.convertDateFormat(testData.form.DOB);
-      await form.dobTextbox().fill(dateOfBirth);
+      await form.dobTextbox.fill(dateOfBirth);
       await page.keyboard.press("Enter");
-      await form.selectSubject(testData.form.subjects);
+      await form.subjectTextbox.click();
+      await form.subjectEnterTextbox.fill(testData.form.subjects);
       await page.keyboard.press("ArrowDown");
       await page.keyboard.press("Enter");
-      const address = await util.currentTime();
-      await page.setInputFiles(form.uploadPictureButton(), testData.form.pictureURL);
+      const address = await util.currentTime;
+      await page.setInputFiles(form.uploadPictureButton, testData.form.pictureURL);
       await form.hobbiesCheckbox(testData.form.hobbies[0]).setChecked(true);
       await form.hobbiesCheckbox(testData.form.hobbies[1]).setChecked(true);
-      await form.currentAddressTextbox().fill(testData.form.currentAddress + " uploaded Time " + address);
-      await form.submitButton().click();
+      await form.currentAddressTextbox.fill(testData.form.currentAddress + " uploaded Time " + address);
+      await form.submitButton.click();
       const outputPath = "runTimeScreenshots/screenshot.png";
       await page.screenshot({ path: outputPath });
     });

@@ -20,13 +20,10 @@ test.describe("", async () => {
     });
 
     await test.step("Explore Drag and Drop Actions", async () => {
-      await letCodeDragAndDropPage.clickDragAndDropTab();
-      await page.dragAndDrop(letCodeDragAndDropPage.sourceLocation(), letCodeDragAndDropPage.destinationLocation());
+      await letCodeDragAndDropPage.dragAndDropTab.click();
+      await page.dragAndDrop(letCodeDragAndDropPage.sourceLocation, letCodeDragAndDropPage.destinationLocation);
       await page.waitForTimeout(10000);
     });
-
-
-
 
   });
 

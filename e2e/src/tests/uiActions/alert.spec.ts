@@ -9,7 +9,7 @@ test.describe("", async () => {
   test.beforeEach("Launch Letcode.in ", async ({ page, letCodeAlertPage }) => {
     await page.goto(testData.testUrl, { waitUntil: "load" });
     await page.waitForTimeout(5000);
-    await letCodeAlertPage.clickAlertTab();
+    await letCodeAlertPage.alertTab.click();
   });
 
   test.afterAll("TearDown", async ({ browser }) => {
@@ -22,7 +22,7 @@ test.describe("", async () => {
       console.log("dialog Type-->" + dialog.type());
       await dialog.accept();
     });
-    await letCodeAlertPage.simpleAlert().click();
+    await letCodeAlertPage.simpleAlert.click();
     await page.waitForLoadState();
   });
 
@@ -32,7 +32,7 @@ test.describe("", async () => {
       console.log("dialog Type-->" + dialog.type());
       await dialog.dismiss();
     });
-    await letCodeAlertPage.confirmAlert().click();
+    await letCodeAlertPage.confirmAlert.click();
     await page.waitForLoadState();
 
   });
@@ -44,7 +44,7 @@ test.describe("", async () => {
       console.log("dialog Type-->" + dialog.type());
       await dialog.accept();
     });
-    await letCodeAlertPage.confirmAlert().click();
+    await letCodeAlertPage.confirmAlert.click();
     await page.waitForLoadState();
 
   });

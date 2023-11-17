@@ -20,7 +20,7 @@ test.describe("Final Dissertation", async () => {
     });
 
     await test.step("Verify Header", async () => {
-      const header = await letCodeInputTextPage.getHeaderText();
+      const header = await letCodeInputTextPage.headerText.textContent();
       console.log(header);
       expect(header).toContain(testData.header);
     });

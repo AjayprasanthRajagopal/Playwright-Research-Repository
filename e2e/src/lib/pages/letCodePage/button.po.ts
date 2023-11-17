@@ -3,39 +3,19 @@ import { LetCodeLocators } from "../../locators/letCodeLocators";
 
 export class LetCodeButtonPage {
 
-  private locators: LetCodeLocators;
-  readonly page: Page;
+  private locators = new  LetCodeLocators;
 
-  constructor (page: Page) {
-    this.page = page;
-    this.locators = new LetCodeLocators();
+  constructor (private readonly page: Page) {
   }
 
-  workSpaceButton () {
-    return this.page.locator(this.locators.CommonPageObject.workSpace);
-  }
-  async clickButtonTab () {
-    await this.page.getByText(this.locators.buttonPageObject.buttonTab).click();
-  }
 
-  homeButton () {
-    return this.page.locator(this.locators.buttonPageObject.goToHomeButton);
-  }
-
-  locationButton () {
-    return this.page.locator(this.locators.buttonPageObject.locationButton);
-  }
-  colorButton () {
-    return this.page.locator(this.locators.buttonPageObject.colorButton);
-  }
-  positionButton () {
-    return this.page.locator(this.locators.buttonPageObject.positionButton);
-  }
-  disabledButton () {
-    return this.page.locator(this.locators.buttonPageObject.disabledButton);
-  }
-  clickAndHoldButton () {
-    return this.page.locator(this.locators.buttonPageObject.holdButton);
-  }
+  public readonly workSpaceButton  = this.page.locator(this.locators.CommonPageObject.workSpace);
+  public readonly buttonTab  = this.page.getByText(this.locators.buttonPageObject.buttonTab);
+  public readonly homeButton  = this.page.locator(this.locators.buttonPageObject.goToHomeButton);
+  public readonly  locationButton = this.page.locator(this.locators.buttonPageObject.locationButton);
+  public readonly colorButton  = this.page.locator(this.locators.buttonPageObject.colorButton);
+  public readonly  positionButton = this.page.locator(this.locators.buttonPageObject.positionButton);
+  public readonly disabledButton  = this.page.locator(this.locators.buttonPageObject.disabledButton);
+  public readonly clickAndHoldButton  = this.page.locator(this.locators.buttonPageObject.holdButton);
 
 }

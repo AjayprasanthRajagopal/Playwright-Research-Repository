@@ -20,12 +20,12 @@ test.describe("", async () => {
     });
 
     await test.step("Interact with Shadow Elements", async () => {
-      await shadowDom.buttonOutsideShadowDom().click();
-      const outSideButtonText = await shadowDom.buttonOutsideShadowDom().innerText();
+      await shadowDom.buttonOutsideShadow.click();
+      const outSideButtonText = await shadowDom.buttonOutsideShadow.innerText();
       expect(outSideButtonText).toBe(testData.buttonOutside);
       console.log("Text on Button outside Shadow Dom=>" + outSideButtonText);
-      await shadowDom.buttonOutsideShadowDom().click();
-      const insideButtonText = await shadowDom.buttonInsideShadowDom().innerText();
+      await shadowDom.buttonOutsideShadow.click();
+      const insideButtonText = await shadowDom.buttonInsideShadow.innerText();
       expect(insideButtonText).toBe(testData.buttonInsideShadowDom);
       console.log("Text on Button Inside Shadow Dom=>" + insideButtonText);
 

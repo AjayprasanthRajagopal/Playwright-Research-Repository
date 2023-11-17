@@ -21,21 +21,21 @@ test.describe("", async () => {
     });
 
     await test.step("Explore DropDown Actions", async () => {
-      await letCodeDropDownPage.clickDropDownTab();
+      await letCodeDropDownPage.dropDownTab.click();
       //select single value from dropdown
-      await letCodeDropDownPage.fruitsDropDown().selectOption({ label: testData.dropDown.fruit });
-      const notification1 = await letCodeDropDownPage.fruitNotification().textContent();
+      await letCodeDropDownPage.fruitsDropDown.selectOption({ label: testData.dropDown.fruit });
+      const notification1 = await letCodeDropDownPage.fruitNotification.textContent();
       expect(notification1).toBe(testData.dropDown.notification(testData.dropDown.fruit));
       //select Multiple  value from dropdown
-      await letCodeDropDownPage.superHeroesDropDown().selectOption(testData.dropDown.superHeroes);
-      const languageDropDownValues = await letCodeDropDownPage.languageDropDown().allInnerTexts();
+      await letCodeDropDownPage.superHeroesDropDown.selectOption(testData.dropDown.superHeroes);
+      const languageDropDownValues = await letCodeDropDownPage.languageDropDown.allInnerTexts();
       languageDropDownValues.forEach(lang => {
         console.log("Values are ==>" + lang);
       });
-      await letCodeDropDownPage.languageDropDown().selectOption(testData.dropDown.language);
-      const notification2 = await letCodeDropDownPage.secondNotification().textContent();
+      await letCodeDropDownPage.languageDropDown.selectOption(testData.dropDown.language);
+      const notification2 = await letCodeDropDownPage.secondNotification.textContent();
       expect(notification2).toBe(testData.dropDown.notification(testData.dropDown.language));
-      await letCodeDropDownPage.countryDropDown().selectOption(testData.dropDown.country);
+      await letCodeDropDownPage.countryDropDown.selectOption(testData.dropDown.country);
 
     });
 

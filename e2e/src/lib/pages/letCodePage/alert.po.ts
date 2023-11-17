@@ -3,36 +3,16 @@ import { LetCodeLocators } from "../../locators/letCodeLocators";
 
 export class LetCodeAlertPage {
 
-  private locators: LetCodeLocators;
-  readonly page: Page;
+  private locators = new LetCodeLocators();
 
-  constructor (page: Page) {
-    this.page = page;
-    this.locators = new LetCodeLocators();
+  constructor (private readonly page: Page) {
   }
 
-
-  async clickAlertTab () {
-    await this.page.locator(this.locators.alertPageObject.alertTab).click();
-  }
-
-  simpleAlert () {
-    return this.page.locator(this.locators.alertPageObject.simpleAlert);
-  }
-  confirmAlert () {
-    return this.page.locator(this.locators.alertPageObject.confirmAlert);
-  }
-  promptAlert () {
-    return this.page.locator(this.locators.alertPageObject.promptAlert);
-  }
-  modernAlert () {
-    return this.page.locator(this.locators.alertPageObject.modernAlert);
-  }
-
-  async closeModernAlert () {
-    await this.page.locator(this.locators.alertPageObject.modernAlertClose).click();
-  }
-
-
+  public readonly alertTab = this.page.locator(this.locators.alertPageObject.alertTab);
+  public readonly simpleAlert  =  this.page.locator(this.locators.alertPageObject.simpleAlert);
+  public readonly confirmAlert =  this.page.locator(this.locators.alertPageObject.confirmAlert);
+  public readonly promptAlert =  this.page.locator(this.locators.alertPageObject.promptAlert);
+  public readonly modernAlert  =  this.page.locator(this.locators.alertPageObject.modernAlert);
+  public readonly modernAlertClose = this.page.locator(this.locators.alertPageObject.modernAlertClose);
 
 }

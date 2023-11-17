@@ -1,23 +1,29 @@
 import { Page } from "@playwright/test";
 import { ShadowDomLocators } from "../../locators/shadowDomLocators";
-
 export class ShadowDomPage {
 
-  private locators: ShadowDomLocators;
-  readonly page: Page;
 
-  constructor (page: Page) {
-    this.page = page;
-    this.locators = new ShadowDomLocators();
+  private locators = new ShadowDomLocators;
+
+  public readonly buttonOutsideShadow = this.page.locator(this.locators.shadow.buttonOutsideShadowRoot);
+  public readonly buttonInsideShadow = this.page.locator(this.locators.shadow.buttonInsideShadowRoot);
+
+  constructor (private readonly page: Page) {
   }
 
 
-  buttonOutsideShadowDom () {
-    return this.page.locator(this.locators.shadow.buttonOutsideShadowRoot);
-  }
+  /*
+   * private  locators = {
+   * buttonOutsideShadowRoot: "//button[@id='my-btn']",
+   * buttonInsideShadowRoot: "#shadow-host #my-btn"
+   * };
+   */
 
-  buttonInsideShadowDom () {
-    return this.page.locator(this.locators.shadow.buttonInsideShadowRoot);
-  }
+  /*
+   *public readonly buttonOutsideShadow = this.page.locator(this.locators.buttonOutsideShadowRoot);
+   *public readonly buttonInsideShadow = this.page.locator(this.locators.buttonInsideShadowRoot);
+   */
+
+
 
 }

@@ -20,11 +20,11 @@ test.describe("", async () => {
     });
 
     await test.step("Explore Frame and Nested Frames", async () => {
-      await letCodeFramePage.clickFrameTab();
+      await letCodeFramePage.frameTab.click();
       //Handle single frame
-      await letCodeFramePage.firstName().fill(testData.frame.firstName, { timeout:20000 });
-      await letCodeFramePage.lastName().fill(testData.frame.lastName, { timeout:20000 });
-      await letCodeFramePage.email().fill(testData.frame.email, { timeout:20000 });
+      await letCodeFramePage.firstName.fill(testData.frame.firstName, { timeout:20000 });
+      await letCodeFramePage.lastName.fill(testData.frame.lastName, { timeout:20000 });
+      await letCodeFramePage.email.fill(testData.frame.email, { timeout:20000 });
     });
 
 
