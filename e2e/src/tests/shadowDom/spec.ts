@@ -1,9 +1,9 @@
 import test from "../../fixtures/baseFixtures";
 import { expect } from "@playwright/test";
-import configSetup from "../../config/configSetup";
+import { shadowData } from "../../lib/testData/index";
 
-const suite = "shadow" ;
-const testData = configSetup(suite);
+const testData = shadowData;
+
 test.describe("", async () => {
 
 
@@ -28,8 +28,7 @@ test.describe("", async () => {
       const insideButtonText = await shadowDom.buttonInsideShadow.innerText();
       expect(insideButtonText).toBe(testData.buttonInsideShadowDom);
       console.log("Text on Button Inside Shadow Dom=>" + insideButtonText);
-
-
+      console.log(testData.environment);
     });
 
   });

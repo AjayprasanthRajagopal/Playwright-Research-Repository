@@ -1,8 +1,8 @@
 import test from "../../fixtures/baseFixtures";
-import configSetup from "../../config/configSetup";
+import { uiActionsData } from "../../lib/testData/index";
 
-const suite = "uiActions" ;
-const testData = configSetup(suite);
+const testData = uiActionsData;
+
 
 test.describe("", async () => {
 

@@ -1,10 +1,9 @@
 import test from "../../fixtures/baseFixtures";
 import { expect } from "@playwright/test";
 import { DateTimeUtility } from "../../lib/utility/utility";
-import configSetup from "../../config/configSetup";
+import { formData } from "../../lib/testData/index";
 
-const suite = "form" ;
-const testData = configSetup(suite);
+const testData = formData;
 
 test.describe("", async () => {
   test.use({
