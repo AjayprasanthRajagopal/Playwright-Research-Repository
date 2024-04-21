@@ -3,7 +3,8 @@ import { PlaywrightTestConfig, devices } from "@playwright/test";
 const testDirMap = {
   "shadowDom": "shadowDom",
   "form": "form",
-  "uiActions": "uiActions"
+  "uiActions": "uiActions",
+  "rs":"api"
 };
 
 const config: PlaywrightTestConfig = {
@@ -12,8 +13,8 @@ const config: PlaywrightTestConfig = {
   //testMatch: "**/*spec.ts",
 
   testDir: "./e2e/src/tests/",
-  testMatch: `${testDirMap[process.env["SUITE"]] || (process.env["SUITE"] === "form" ? process.env["SUITE"] : "**")}/*spec.ts`,
-  timeout: 60000 * 2,
+  testMatch: `${testDirMap[process.env["SUITE"]] || (process.env["SUITE"] === "form" ? process.env["SUITE"] : "**")}/*.spec.ts`,
+  timeout: 60000 * 4,
   expect: {
     timeout: 10000
   },
@@ -21,11 +22,11 @@ const config: PlaywrightTestConfig = {
 
   forbidOnly: !!process.env.CI,
 
-  retries: 1,
+  retries: 0,
 
   workers: 10,
 
-  reporter: [["dot"]],
+  reporter: [["html"]],
 
   use: {
 

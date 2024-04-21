@@ -9,6 +9,7 @@ import { LetCodeRadioPage } from "../lib/pages/letCodePage/radio.po";
 import { LetCodeWindowPage } from "../lib/pages/letCodePage/window.po";
 import { Form } from "../lib/pages/demoQaPage/form.po";
 import { ShadowDomPage } from "../lib/pages/shadowPage/shadow.po";
+import { RahulShettyPage } from "../lib/pages/rahulShettyPage/rahulShetty.po";
 
 
 const baseTest = test.extend<{
@@ -24,6 +25,8 @@ const baseTest = test.extend<{
     letCodeWindowPage: LetCodeWindowPage;
     form: Form;
     shadowDom: ShadowDomPage
+    rahulShetty: RahulShettyPage
+
 }>({
   browserContext: async ({ browser }, use) => {
     const context = await browser.newContext();
@@ -63,6 +66,9 @@ const baseTest = test.extend<{
   },
   shadowDom: async ({ page }, use) => {
     await use(new ShadowDomPage(page));
+  },
+  rahulShetty: async ({ page }, use) => {
+    await use(new RahulShettyPage(page));
   },
 });
 
